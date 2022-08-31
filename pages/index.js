@@ -9,7 +9,7 @@ export default function Home({ test }) {
   const [userData, setUserData] = useState(test)
   const createTest = async () => {
     const rondomNumber = Math.floor(Math.random() * 1000)
-    const res = await fetch("/api/test/add", {
+    const res = await fetch("/api/test", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,13 +22,11 @@ export default function Home({ test }) {
     const data = await res.json()
 
   }
-  const DeleteData = (ind) => {
-    console.log(ind)
-    const deldata = userData.filter((dat, indd) => {
-      return indd != ind;
+  const DeleteData = async (_id) => {
+    const res = await fetch(`/api/test/${_id}`, {
+      method: "DELETE"
     })
-    console.log(deldata)
-    setUserData(deldata)
+    const data = await res.json()
   }
 
   return (
@@ -45,8 +43,8 @@ export default function Home({ test }) {
         </h1>
         <div className={styles.grid}>
           {
-            userData?.map((userData, ind) => {
-              return <div key={ind} className={styles.card} onClick={() => DeleteData(ind)}>
+            userData?.map((userData) => {
+              return <div key={userData._id} className={styles.card} onClick={() => DeleteData(userData._id)}>
                 <h2>Name : {userData.name} &rarr;</h2>
                 <p>Email : {userData.email}</p>
               </div>
