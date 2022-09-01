@@ -3,7 +3,7 @@ import Test from "../../../models/testModel"
 
 export default async function handler(req, res) {
     const { method } = req;
-   
+
     switch (method) {
         case "GET":
             try {
@@ -16,7 +16,7 @@ export default async function handler(req, res) {
             }
             break;
 
-            case "POST":
+        case "POST":
             try {
                 await connectMongo()
                 const test = await Test.create(req.body)
@@ -26,7 +26,5 @@ export default async function handler(req, res) {
                 res.status(500).json({ success: false, data: test })
             }
             break;
-
-       
     }
 }

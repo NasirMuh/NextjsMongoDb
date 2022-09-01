@@ -10,7 +10,6 @@ export default async function handler(req, res) {
                 const { name, email } = req.body;
                 await connectMongo()
                 await Test.updateOne({ _id: ClientId }, { name, email })
-                console.log("client Id"+ ClientId + "name " + name + "email" + email)
                 res.status(200).json({ success: true })
             } catch (error) {
                 console.log(error)
