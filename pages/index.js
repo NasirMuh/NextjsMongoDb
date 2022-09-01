@@ -38,7 +38,7 @@ export default function Home({ test }) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to Next.js And Mongoose
+          Welcome to Next.js And Mongoose 1
         </h1>
         {/* <div className={styles.grid}>
           {
