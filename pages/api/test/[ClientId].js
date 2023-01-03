@@ -10,9 +10,8 @@ export default async function handler(req, res) {
                 const { name, email } = req.body;
                 await connectMongo()
                 await Test.updateOne({ _id: ClientId }, { name, email })
-                res.status(200).json({ success: true })
+                res.status(200).json({ success: true, data: req.body })
             } catch (error) {
-                console.log(error)
                 res.status(500).json({ success: false, error })
             }
             break;
@@ -21,9 +20,8 @@ export default async function handler(req, res) {
             try {
                 await connectMongo()
                 await Test.deleteOne({ _id: ClientId })
-                res.status(200).json({ success: true })
+                res.status(200).json({ success: true, data: req.body })
             } catch (error) {
-                console.log(error)
                 res.status(500).json({ success: false, error })
             }
             break;
