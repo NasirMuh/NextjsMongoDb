@@ -4,7 +4,6 @@ import Test from "../../../models/testModel"
 export default async function handler(req, res) {
     const { method } = req;
     const { ClientId } = req.query;
-    console.log(ClientId)
     switch (method) {
         case "GET":
             try {

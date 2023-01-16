@@ -67,6 +67,6 @@ export const getServerSideProps = async () => {
       }
     }
   } catch (error) {
-    console.log("Inside of props" + error)
+    // console.log("Inside of props" + error)
   }
 }

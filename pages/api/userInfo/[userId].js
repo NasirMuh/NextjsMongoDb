@@ -1,4 +1,4 @@
-import { getUser } from "../../../controllers/userInfoController";
+import { getUser, deleteUser } from "../../../controllers/userInfoController";
 import connectMongo from "../../../utils/connectMongo";
 
 export default async function handler(req, res) {
@@ -7,6 +7,9 @@ export default async function handler(req, res) {
     switch (method) {
         case "GET":
             return getUser(req, res)
+            break;
+        case "DELETE":
+            return deleteUser(req, res)
             break;
 
         default:

@@ -36,5 +36,15 @@ export const postUser = async (req, res) => {
 
 
 
-
+export const deleteUser = async (req, res) => {
+    const { userId } = req.query;
+    try {
+        await connectMongo()
+        const test = await UserInfo.deleteOne({ _id: userId })
+        if (!test) return res.status(404).json({ message: "Data not found" })
+        return res.status(200).json({ success: true, data: test })
+    } catch (error) {
+        return res.status(405).json({ success: false, message: "Error in fetching" })
+    }
+}
 
