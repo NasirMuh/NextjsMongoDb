@@ -3,12 +3,11 @@ import Test from "../../../models/testModel"
 
 export default async function handler(req, res) {
     const { method } = req;
-
     switch (method) {
         case "GET":
             try {
                 await connectMongo()
-                const test = await Test.find({ name: "Test  366" })
+                const test = await Test.find({})
                 res.status(200).json({ success: true, data: test })
             } catch (error) {
                 res.status(500).json({ success: false })
